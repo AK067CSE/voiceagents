@@ -23,12 +23,5 @@ COPY . .
 RUN useradd --create-home --shell /bin/bash appuser && chown -R appuser:appuser /app
 USER appuser
 
-# Expose health check port (optional)
-EXPOSE 8080
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8080/health || exit 1
-
 # Default command: run the LiveKit voice agent worker
 CMD ["python", "voice_agent.py", "dev"]
