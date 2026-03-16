@@ -1,0 +1,47 @@
+# ═══════════════════════════════════════════════════════════════
+#  .env.example — Voice Agent Configuration
+#  Copy to .env and fill in your keys
+# ═══════════════════════════════════════════════════════════════
+
+# ── REQUIRED (all providers) ────────────────────────────────────
+LIVEKIT_URL=wss://your-project.livekit.cloud
+LIVEKIT_API_KEY=APIxxxxxxxxxxxxxxxxxx
+LIVEKIT_API_SECRET=your_livekit_secret
+
+DEEPGRAM_API_KEY=your_deepgram_api_key    # STT (Flux / Nova-3) + optional TTS
+GOOGLE_API_KEY=your_google_api_key        # Gemini 2.0 Flash via ADK
+
+# ── TTS PROVIDER — pick one ─────────────────────────────────────
+# Options: deepgram | cartesia | elevenlabs
+TTS_PROVIDER=cartesia
+
+# ── STT MODEL ───────────────────────────────────────────────────
+# true  = Deepgram Flux (recommended — built-in EoT, no VAD)
+# false = Deepgram Nova-3 + Silero VAD
+USE_FLUX=true
+
+# ── CARTESIA (recommended TTS — fastest, most realistic) ────────
+# pip install livekit-plugins-cartesia
+CARTESIA_API_KEY=your_cartesia_api_key
+# Voice IDs — see https://play.cartesia.ai/voices
+# Katie (warm American, agent-optimized):
+CARTESIA_VOICE=f786b574-daa5-4673-aa0c-cbe3e8534c02
+CARTESIA_MODEL=sonic-3
+
+# ── ELEVENLABS (ultra-low latency, voice cloning) ───────────────
+# pip install livekit-plugins-elevenlabs
+ELEVEN_API_KEY=your_elevenlabs_api_key
+# Flash v2.5 = 75ms | Turbo v2.5 = 250ms (richer quality)
+ELEVENLABS_MODEL=eleven_flash_v2_5
+# Sarah voice (warm, natural):
+ELEVENLABS_VOICE=EXAVITQu4vr4xnSDxMaL
+
+# ── DEEPGRAM TTS (enterprise, unified pipeline) ──────────────────
+# Best voices for naturalness:
+# aura-2-luna-en  (natural conversational)
+# aura-2-thalia-en (warm & clear)
+# aura-2-arcas-en  (deep, authoritative)
+DEEPGRAM_VOICE=aura-2-luna-en
+
+# ── MISC ─────────────────────────────────────────────────────────
+TRANSCRIPT_FILE=transcripts.json
