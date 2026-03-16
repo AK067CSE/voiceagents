@@ -1,0 +1,30 @@
+services:
+  # LiveKit Voice Agent Worker
+  type: pserv
+  name: voice-agent-worker
+  env: python
+  plan: free
+  buildCommand: pip install -r requirements.txt
+  startCommand: python voice_agent.py dev
+  
+  # Environment variables (set these in Render dashboard)
+  envVars:
+    - key: LIVEKIT_URL
+      value: wss://your-project.livekit.cloud
+    - key: LIVEKIT_API_KEY
+      value: APIxxxxxxxxxxxxxxxxxx
+    - key: LIVEKIT_API_SECRET
+      value: your_livekit_secret
+    - key: DEEPGRAM_API_KEY
+      value: your_deepgram_api_key
+    - key: GOOGLE_API_KEY
+      value: your_google_api_key
+    - key: TTS_PROVIDER
+      value: deepgram
+    - key: USE_FLUX
+      value: "false"
+    # Optional:
+    # - key: CARTESIA_API_KEY
+    #   value: your_cartesia_api_key
+    # - key: ELEVEN_API_KEY
+    #   value: your_elevenlabs_api_key
